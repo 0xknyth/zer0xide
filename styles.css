@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;
+    color: #0ff;
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+}
+
+header {
+    background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+    text-align: center;
+    padding: 50px 20px;
+    border-bottom: 2px solid #0ff;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5em;
+    color: #0ff;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before { left: 2px; color: #ff0; animation: glitchTop 1s infinite; }
+.glitch::after { left: -2px; color: #f0f; animation: glitchBottom 1.5s infinite; }
+
+.tagline { color: #f0f; font-size: 1.2em; margin-top: 10px; }
+
+.products, .contact {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff0;
+    text-align: center;
+    font-size: 2em;
+    text-shadow: 0 0 10px #ff0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: #1a1a1a;
+    padding: 20px;
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #0ff;
+}
+
+.product h3 { color: #f0f; margin: 10px 0; }
+.product p { color: #ccc; font-size: 0.9em; }
+
+button {
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    transition: background 0.3s;
+}
+
+button:hover { background: #c2185b; }
+
+.contact { text-align: center; }
+.contact p { color: #ccc; margin-bottom: 20px; }
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #0ff;
+    color: #0ff;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #0ff;
+    color: #ccc;
+}
+
+@keyframes neonGlow {
+    from { box-shadow: 0 0 10px #0ff; }
+    to { box-shadow: 0 0 20px #0ff; }
+}
+
+@keyframes glitchTop {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitchBottom {
+    0%, 100% { transform: translate(0, 0); }
+    30% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, 2px); }
+}
+
+@media (max-width: 600px) {
+    .glitch { font-size: 2em; }
+    .product-grid { grid-template-columns: 1fr; }
+}
